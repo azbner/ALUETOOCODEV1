@@ -11,7 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <style>
   * { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-  html, body { height: 100%; }
+  html, body { height: 100%; margin: 0; padding: 0; }
   body { overscroll-behavior: none; }
   .bg-mesh {
     position: fixed; inset: 0; z-index: -2;
@@ -54,8 +54,9 @@
 <body class="text-white antialiased selection:bg-fuchsia-500/30 selection:text-white">
 <div class="bg-mesh"></div>
 
-<div class="min-h- w-full flex items-center justify-center p-3 sm:p-6">
-  <main class="w-full max-w- glass rounded- p-4 sm:p-6 md:p-8 fade-in">
+<div class="min-h-screen w-full flex items-center justify-center p-3 sm:p-6">
+  <main class="w-full max-w-5xl glass rounded-3xl p-4 sm:p-6 md:p-8 fade-in">
+
     <!-- Header -->
     <header class="flex items-center justify-between gap-3 mb-5">
       <div class="flex items-center gap-3 min-w-0">
@@ -65,10 +66,10 @@
           </svg>
         </div>
         <div class="min-w-0">
-          <h1 class="text- sm:text- font-semibold tracking-tight leading-none truncate">Aluetoo For Code</h1>
-          <p class="text- text-white/60 -mt-0.5 hidden sm:block">Génère. Prévisualise.</p>
+          <h1 class="text-base sm:text-lg font-semibold tracking-tight leading-none truncate">Aluetoo For Code</h1>
+          <p class="text-xs text-white/60 mt-0.5 hidden sm:block">Génère. Prévisualise.</p>
         </div>
-        <span class="ml-1 sm:ml-2 px-2.5 py-1 rounded-full text- font-medium bg-white/10 border border-white/15 text-white/80 backdrop-blur">by Léo</span>
+        <span class="ml-1 sm:ml-2 px-2.5 py-1 rounded-full text-xs font-medium bg-white/10 border border-white/15 text-white/80 backdrop-blur">by Léo</span>
       </div>
       <div class="flex items-center gap-2">
         <button id="historyBtn" class="sm:hidden w-9 h-9 grid place-items-center rounded-xl glass-soft hover:bg-white/10 transition" title="Historique">
@@ -85,27 +86,27 @@
 
     <!-- Key warning -->
     <div id="keyBanner" class="hidden mb-4 glass-soft rounded-2xl p-3 sm:p-3.5 flex items-center gap-3">
-      <div class="w-8 h-8 rounded-xl bg-amber-500/20 grid place-items-center text-amber-300 shrink-0">!</div>
+      <div class="w-8 h-8 rounded-xl bg-amber-500/20 grid place-items-center text-amber-300 shrink-0 font-bold">!</div>
       <p class="text-sm text-white/85 leading-snug">Ajoute ta clé que leo ta envoyer pour commencer. Elle reste uniquement sur ton appareil.</p>
-      <button id="openSettingsFromBanner" class="ml-auto text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 border border-white/15">Ajouter</button>
+      <button id="openSettingsFromBanner" class="ml-auto text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 border border-white/15 shrink-0">Ajouter</button>
     </div>
 
     <!-- Preview -->
     <section class="relative">
-      <div id="preview-wrap" class="relative bg-white rounded- overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.35)] ring-1 ring-black/5">
+      <div id="preview-wrap" class="relative bg-white rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.35)] ring-1 ring-black/5">
         <div class="aspect-[4/3] sm:aspect-[16/9] md:aspect-[16/8.5] lg:aspect-[16/7.5] w-full">
           <iframe id="preview" class="w-full h-full bg-white" sandbox="allow-scripts allow-forms allow-same-origin allow-popups" title="Aperçu"></iframe>
         </div>
 
         <!-- Welcome -->
         <div id="welcome" class="absolute inset-0 bg-[#0b0d12] text-white grid place-items-center p-6">
-          <div class="max-w- w-full text-center">
+          <div class="max-w-2xl w-full text-center">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-soft text-xs mb-4">
               <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               Prêt à créer
             </div>
             <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Décris ce que tu veux, je code l'aperçu.</h2>
-            <p class="mt-2 text-white/70">Exemples pour démarrer :</p>
+            <p class="mt-2 text-white/70 text-sm">Exemples pour démarrer :</p>
             <div class="mt-4 grid sm:grid-cols-3 gap-2.5">
               <button data-example="une carte d'anniversaire interactive avec confettis et musique" class="example glass-soft rounded-2xl p-3 text-left hover:bg-white/10 transition">
                 <p class="text-sm font-medium">Carte d'anniversaire</p>
@@ -130,8 +131,8 @@
             <div class="glass rounded-3xl px-6 py-5 flex items-center gap-4 shimmer">
               <div class="w-10 h-10 rounded-2xl border-2 border-white/20 border-t-white/80 animate-spin"></div>
               <div>
-                <p class="font-medium">Génération en cours...</p>
-                <p class="text-xs text-white/60">Aluetoo construit ton interface</p>
+                <p class="font-medium text-sm">Génération en cours...</p>
+                <p class="text-xs text-white/60 mt-0.5">Aluetoo construit ton interface</p>
               </div>
             </div>
           </div>
@@ -140,16 +141,16 @@
 
       <!-- Secondary actions -->
       <div class="flex flex-wrap items-center gap-2 mt-3">
-        <button id="regenerate" class="px-3.5 py-2 rounded-xl glass-soft text-sm hover:bg-white/10 disabled:opacity-40" disabled>
+        <button id="regenerate" class="px-3.5 py-2 rounded-xl glass-soft text-sm hover:bg-white/10 disabled:opacity-40 transition" disabled>
           ↻ Régénérer
         </button>
-        <button id="fullscreen" class="px-3.5 py-2 rounded-xl glass-soft text-sm hover:bg-white/10">
+        <button id="fullscreen" class="px-3.5 py-2 rounded-xl glass-soft text-sm hover:bg-white/10 transition">
           ⤢ Plein écran
         </button>
-        <button id="copyPreview" class="px-3.5 py-2 rounded-xl glass-soft text-sm hover:bg-white/10 disabled:opacity-40" disabled>
+        <button id="copyPreview" class="px-3.5 py-2 rounded-xl glass-soft text-sm hover:bg-white/10 disabled:opacity-40 transition" disabled>
           ⎘ Copier aperçu
         </button>
-        <div class="ml-auto hidden sm:flex items-center gap-2 text- text-white/50">
+        <div class="ml-auto hidden sm:flex items-center gap-2 text-xs text-white/50">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/80"></span> Aperçu uniquement
         </div>
       </div>
@@ -158,14 +159,14 @@
     <!-- Prompt -->
     <section class="mt-5">
       <div class="relative">
-        <textarea id="prompt" rows="2" placeholder="Décris ton idée..." class="w-full resize-none rounded- bg-[rgba(255,255,255,0.06)] border border-white/15 text- leading-[1.45] text-white placeholder-white/45 pl-4 pr- py-3.5 focus:outline-none focus:ring-2 focus:ring-fuchsia-500/40 focus:border-white/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"></textarea>
-        <button id="send" class="send-btn absolute right-2 bottom-2 w- h- rounded-full grid place-items-center" title="Envoyer">
+        <textarea id="prompt" rows="2" placeholder="Décris ton idée..." class="w-full resize-none rounded-2xl bg-white/[0.06] border border-white/15 text-sm leading-relaxed text-white placeholder-white/45 pl-4 pr-14 py-3.5 focus:outline-none focus:ring-2 focus:ring-fuchsia-500/40 focus:border-white/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"></textarea>
+        <button id="send" class="send-btn absolute right-2 bottom-2 w-10 h-10 rounded-full grid place-items-center" title="Envoyer">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
             <path d="M12 5v14M5 12l7-7 7 7" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
       </div>
-      <div class="mt-2.5 flex items-center gap-2 text- text-white/55">
+      <div class="mt-2.5 flex items-center gap-2 text-xs text-white/55">
         <span>Entrée pour envoyer</span>
         <span class="opacity-40">•</span>
         <span>Shift+Entrée pour retour à la ligne</span>
@@ -174,34 +175,35 @@
       <!-- History -->
       <div id="historyWrap" class="mt-3">
         <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
-          <span class="text- uppercase tracking-wider text-white/40 shrink-0">Historique</span>
+          <span class="text-xs uppercase tracking-wider text-white/40 shrink-0">Historique</span>
           <div id="history" class="flex gap-1.5"></div>
         </div>
       </div>
     </section>
+
   </main>
 </div>
 
 <!-- Settings Modal -->
-<div id="settings" class="fixed inset-0 z-[60] hidden">
+<div id="settings" class="fixed inset-0 z-[60] hidden flex items-center justify-center p-4">
   <div id="settings-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-md"></div>
-  <div class="relative z-10 max-w-md w-[92%] mx-auto mt- glass rounded- p-6 fade-in">
+  <div class="relative z-10 max-w-md w-full glass rounded-3xl p-6 fade-in">
     <div class="flex items-start justify-between gap-4">
       <div>
         <h3 class="text-xl font-semibold">Clé API Aluetoo</h3>
         <p class="text-sm text-white/65 mt-1">Utilisée uniquement dans ton navigateur pour générer l'aperçu.</p>
       </div>
-      <button id="closeSettings" class="w-8 h-8 grid place-items-center rounded-xl glass-soft hover:bg-white/10">✕</button>
+      <button id="closeSettings" class="w-8 h-8 grid place-items-center rounded-xl glass-soft hover:bg-white/10 shrink-0">✕</button>
     </div>
     <div class="mt-5">
       <label class="text-xs text-white/60">Clé (commence par alu_)</label>
-      <input id="apiKey" type="password" inputmode="text" autocomplete="off" placeholder="alu_..." class="mt-1.5 w-full rounded-2xl bg-black/30 border border-white/15 px-4 py-3 text- focus:outline-none focus:ring-2 focus:ring-violet-500/40">
-      <p class="mt-2.5 text- leading-snug text-amber-200/80 bg-amber-500/10 border border-amber-400/20 rounded-xl px-3 py-2">
-        Ne partage jamais ta clé. Elle est stockée sur ton navigateur et n'est jamais envoyée ailleurs que vers Aluetoo depuis ton navigateur.
+      <input id="apiKey" type="password" inputmode="text" autocomplete="off" placeholder="alu_..." class="mt-1.5 w-full rounded-2xl bg-black/30 border border-white/15 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40">
+      <p class="mt-2.5 text-xs leading-snug text-amber-200/80 bg-amber-500/10 border border-amber-400/20 rounded-xl px-3 py-2">
+        Ne partage jamais ta clé. Elle est stockée sur ton navigateur et n'est jamais envoyée ailleurs que vers Groq depuis ton navigateur.
       </p>
-      <div class="mt-4 flex gap-2">
-        <button id="saveKey" class="px-4 py-2.5 rounded-xl bg-white text-black font-medium hover:opacity-90 active:opacity-80">Enregistrer</button>
-        <button id="clearKey" class="px-4 py-2.5 rounded-xl glass-soft hover:bg-white/10">Supprimer</button>
+      <div class="mt-4 flex gap-2 items-center">
+        <button id="saveKey" class="px-4 py-2.5 rounded-xl bg-white text-black text-sm font-medium hover:opacity-90 active:opacity-80">Enregistrer</button>
+        <button id="clearKey" class="px-4 py-2.5 rounded-xl glass-soft text-sm hover:bg-white/10">Supprimer</button>
         <a href="https://console.groq.com/keys" target="_blank" rel="noreferrer" class="ml-auto text-xs underline decoration-white/30 underline-offset-4 hover:decoration-white/60">Obtenir une clé</a>
       </div>
     </div>
@@ -209,8 +211,8 @@
 </div>
 
 <!-- Toast -->
-<div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-6 z-[70] hidden">
-  <div class="glass rounded-2xl px-4 py-2.5 text-sm shadow-xl"></div>
+<div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-6 z-[70] hidden pointer-events-none">
+  <div class="glass rounded-2xl px-4 py-2.5 text-sm shadow-xl text-white"></div>
 </div>
 
 <script>
@@ -248,7 +250,6 @@ function toast(msg, ms=2200){
   const box = el.toast.firstElementChild;
   box.textContent = msg;
   el.toast.classList.remove('hidden');
-  el.toast.classList.add('fade-in');
   setTimeout(()=>{ el.toast.classList.add('hidden'); }, ms);
 }
 
@@ -267,13 +268,12 @@ function hideSettings(){ showSettings(false); }
 
 function saveKey(){
   const v = el.apiKey.value.trim();
-  // ✅ CORRIGÉ : validation alu_ au lieu de gsk_
   if(v && !v.startsWith('alu_')){ toast('La clé semble invalide (alu_…)'); return; }
   state.apiKey = v;
   localStorage.setItem('aluetoo_groq_key', v);
   updateKeyUI();
   hideSettings();
-  toast(v ? 'Clé enregistrée' : 'Clé supprimée');
+  toast(v ? 'Clé enregistrée ✓' : 'Clé supprimée');
 }
 function clearKey(){ el.apiKey.value=''; saveKey(); }
 
@@ -287,7 +287,7 @@ function renderHistory(){
   el.history.innerHTML = '';
   state.history.forEach(p=>{
     const b = document.createElement('button');
-    b.className = 'shrink-0 px-2.5 py-1.5 rounded-lg glass-soft text-xs hover:bg-white/10 max-w- truncate';
+    b.className = 'shrink-0 px-2.5 py-1.5 rounded-lg glass-soft text-xs hover:bg-white/10 transition truncate max-w-[180px]';
     b.textContent = p;
     b.title = p;
     b.onclick = ()=>{ el.prompt.value = p; el.prompt.focus(); };
@@ -306,8 +306,8 @@ function extractHTML(text){
   t = t.replace(/^```html\s*/i,'').replace(/^```\s*/,'').replace(/```$/,'');
   const iDoc = t.toLowerCase().indexOf('<!doctype');
   const iHtml = t.toLowerCase().indexOf('<html');
-  const start = iDoc >=0 ? iDoc : (iHtml>=0? iHtml : 0);
-  if(start>0) t = t.slice(start);
+  const start = iDoc >= 0 ? iDoc : (iHtml >= 0 ? iHtml : 0);
+  if(start > 0) t = t.slice(start);
   return t;
 }
 
@@ -327,7 +327,7 @@ async function callGroq(prompt, model){
     body: JSON.stringify(body)
   });
   if(!res.ok){
-    const txt = await res.text().catch(()=> '');
+    const txt = await res.text().catch(()=>'');
     throw new Error(txt || `Erreur Groq ${res.status}`);
   }
   const data = await res.json();
@@ -335,7 +335,7 @@ async function callGroq(prompt, model){
 }
 
 async function generate(promptText, isRegen=false){
-  if(!state.apiKey){ showSettings(true); toast('Ajoute ta clé Groq'); return; }
+  if(!state.apiKey){ showSettings(true); toast('Ajoute ta clé d\'abord'); return; }
   const prompt = (promptText || el.prompt.value || '').trim();
   if(!prompt){ toast('Écris une idée d\'abord'); el.prompt.focus(); return; }
 
@@ -364,13 +364,11 @@ async function generate(promptText, isRegen=false){
   }catch(err){
     console.error(err);
     el.welcome.classList.remove('hidden');
-    toast('Échec de génération. Vérifie ta clé et réessaie.');
+    toast('Échec. Vérifie ta clé et réessaie.');
   }finally{
     setLoading(false);
   }
 }
-
-function handleSend(){ generate(); }
 
 async function copyPreview(){
   if(!state.lastHTML){ toast('Rien à copier'); return; }
@@ -381,8 +379,7 @@ async function copyPreview(){
     const canvas = await html2canvas(doc.documentElement, {
       backgroundColor: '#ffffff',
       scale: Math.min(2, window.devicePixelRatio || 1.5),
-      useCORS: true,
-      logging: false,
+      useCORS: true, logging: false,
       windowWidth: doc.documentElement.scrollWidth,
       windowHeight: doc.documentElement.scrollHeight
     });
@@ -390,39 +387,34 @@ async function copyPreview(){
     if(navigator.clipboard && window.ClipboardItem){
       await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
       toast('Aperçu copié en image !');
-    }else{
-      throw new Error('Clipboard non supporté');
-    }
+    }else{ throw new Error('non supporté'); }
   }catch(e){
     try{
-      const iframe = el.preview;
-      const doc = iframe.contentDocument;
+      const doc = el.preview.contentDocument;
       const canvas = await html2canvas(doc.documentElement, { backgroundColor:'#fff', scale:2 });
       const a = document.createElement('a');
       a.href = canvas.toDataURL('image/png');
       a.download = 'aluetoo-apercu.png';
       a.click();
       toast('Image téléchargée');
-    }catch{
-      toast('Impossible de copier');
-    }
+    }catch{ toast('Impossible de copier'); }
   }
 }
 
 function toggleFullscreen(){
-  const wrap = document.getElementById('preview-wrap');
+  const wrap = $('preview-wrap');
   if(document.fullscreenElement){ document.exitFullscreen(); }
   else { wrap.requestFullscreen?.(); }
 }
 
-el.send.onclick = handleSend;
+// Events
+el.send.onclick = ()=> generate();
 el.prompt.addEventListener('keydown', (e)=>{
-  if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); handleSend(); }
+  if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); generate(); }
 });
 el.regenerate.onclick = ()=> generate(state.lastPrompt, true);
 el.fullscreen.onclick = toggleFullscreen;
 el.copyPreview.onclick = copyPreview;
-
 el.settingsBtn.onclick = ()=> showSettings(true);
 el.closeSettings.onclick = hideSettings;
 el.settingsBackdrop.onclick = hideSettings;
@@ -432,24 +424,24 @@ el.clearKey.onclick = clearKey;
 
 document.querySelectorAll('.example').forEach(btn=>{
   btn.addEventListener('click', ()=>{
-    const ex = btn.getAttribute('data-example');
-    el.prompt.value = ex;
+    el.prompt.value = btn.getAttribute('data-example');
     el.prompt.focus();
   });
 });
 
-updateKeyUI();
-renderHistory();
-if(state.lastPrompt){ el.prompt.value = state.lastPrompt; el.regenerate.disabled = false; }
-if(!state.apiKey){ el.keyBanner.classList.remove('hidden'); }
+$('historyBtn').onclick = ()=>{
+  $('historyWrap').scrollIntoView({behavior:'smooth', block:'nearest'});
+};
 
 el.preview.addEventListener('load', ()=>{
   if(state.lastHTML){ el.welcome.classList.add('hidden'); }
 });
 
-$('historyBtn').onclick = ()=> {
-  document.getElementById('historyWrap').scrollIntoView({behavior:'smooth', block:'nearest'});
-};
+// Init
+updateKeyUI();
+renderHistory();
+if(state.lastPrompt){ el.prompt.value = state.lastPrompt; el.regenerate.disabled = false; }
+if(!state.apiKey){ el.keyBanner.classList.remove('hidden'); }
 </script>
 </body>
 </html>
