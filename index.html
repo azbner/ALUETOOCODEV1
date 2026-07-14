@@ -10,45 +10,45 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <style>
-    * { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+  * { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
   html, body { height: 100%; }
   body { overscroll-behavior: none; }
- .bg-mesh {
+  .bg-mesh {
     position: fixed; inset: 0; z-index: -2;
     background: linear-gradient(120deg, #6d28d9, #3b82f6, #ec4899, #8b5cf6, #06b6d4);
     background-size: 300% 300%;
     animation: gradient 18s ease infinite;
   }
- .bg-mesh::before,.bg-mesh::after {
-    content: ""; position: absolute; border-radius: 50%; filter: blur(100px); opacity:.75;
+  .bg-mesh::before, .bg-mesh::after {
+    content: ""; position: absolute; border-radius: 50%; filter: blur(100px); opacity: .75;
   }
- .bg-mesh::before { width: 520px; height: 520px; background: #a855f7; top: -120px; left: -120px; animation: float 22s ease-in-out infinite; }
- .bg-mesh::after { width: 460px; height: 460px; background: #f472b6; bottom: -100px; right: -80px; animation: float 26s ease-in-out infinite reverse; }
+  .bg-mesh::before { width: 520px; height: 520px; background: #a855f7; top: -120px; left: -120px; animation: float 22s ease-in-out infinite; }
+  .bg-mesh::after { width: 460px; height: 460px; background: #f472b6; bottom: -100px; right: -80px; animation: float 26s ease-in-out infinite reverse; }
   @keyframes gradient { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
   @keyframes float { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(40px,-30px) scale(1.1)} }
- .glass {
+  .glass {
     background: rgba(12, 14, 20, 0.55);
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255,255,255,0.14);
     box-shadow: 0 25px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
   }
- .glass-soft {
+  .glass-soft {
     background: rgba(255,255,255,0.06);
     backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255,255,255,0.12);
   }
- .send-btn { background: #10b981; box-shadow: 0 10px 20px rgba(16,185,129,0.25), 0 2px 6px rgba(16,185,129,0.3); transition: all.2s ease; }
- .send-btn:hover { transform: translateY(-1px) scale(1.03); box-shadow: 0 14px 28px rgba(16,185,129,0.35), 0 0 0 8px rgba(16,185,129,0.12); }
- .send-btn:active { transform: scale(0.97); }
- .send-btn:disabled { opacity:.6; pointer-events: none; }
- .fade-in { animation: fadeIn.6s ease both; }
+  .send-btn { background: #10b981; box-shadow: 0 10px 20px rgba(16,185,129,0.25), 0 2px 6px rgba(16,185,129,0.3); transition: all .2s ease; }
+  .send-btn:hover { transform: translateY(-1px) scale(1.03); box-shadow: 0 14px 28px rgba(16,185,129,0.35), 0 0 0 8px rgba(16,185,129,0.12); }
+  .send-btn:active { transform: scale(0.97); }
+  .send-btn:disabled { opacity: .6; pointer-events: none; }
+  .fade-in { animation: fadeIn .6s ease both; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
- .shimmer { position: relative; overflow: hidden; }
- .shimmer::after { content:""; position:absolute; inset:0; background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,.08) 40%, transparent 60%); transform: translateX(-100%); animation: shimmer 2.2s infinite; }
+  .shimmer { position: relative; overflow: hidden; }
+  .shimmer::after { content:""; position:absolute; inset:0; background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,.08) 40%, transparent 60%); transform: translateX(-100%); animation: shimmer 2.2s infinite; }
   @keyframes shimmer { to { transform: translateX(200%); } }
   ::-webkit-scrollbar { width: 8px; height: 8px; }
   ::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 8px; }
- .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
 </style>
 </head>
 <body class="text-white antialiased selection:bg-fuchsia-500/30 selection:text-white">
@@ -76,8 +76,8 @@
         </button>
         <button id="settingsBtn" class="w-9 h-9 grid place-items-center rounded-xl glass-soft hover:bg-white/10 transition" title="Paramètres">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M12 15.5a3.5 0 100-7 3.5 3.5 0 000 7z" stroke="white" stroke-opacity=".9" stroke-width="1.5"/>
-            <path d="M19.4 15a1.7 1.7 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.82-.33 1.7 0 01-2.04-2.04 1.7 1.7 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.7 1.7 0 001.82.33H16a1.7 1.7 0 012.04 2.04zM4.6 9a1.7 1.7 0 01-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.7 1.7 0 018.92 4.68 1.7 0 0010.96 6.7c.6.24 1.28.11 1.77-.33l.06-.06a2 2 0 112.83 2.83l-.06.06c-.44.49-.57 1.17-.33 1.77.24.6.11 1.28-.33 1.77" stroke="white" stroke-opacity=".7" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M12 15.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" stroke="white" stroke-opacity=".9" stroke-width="1.5"/>
+            <path d="M19.4 15a1.7 1.7 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.82-.33 1.7 0 01-2.04-2.04 1.7 1.7 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.7 1.7 0 001.82.33H16a1.7 1.7 0 012.04 2.04zM4.6 9a1.7 1.7 0 01-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.7 1.7 0 018.92 4.68 1.7 1.7 0 0010.96 6.7c.6.24 1.28.11 1.77-.33l.06-.06a2 2 0 112.83 2.83l-.06.06c-.44.49-.57 1.17-.33 1.77.24.6.11 1.28-.33 1.77" stroke="white" stroke-opacity=".7" stroke-width="1.2" stroke-linecap="round"/>
           </svg>
         </button>
       </div>
@@ -215,29 +215,8 @@
 
 <script>
 const $ = (id) => document.getElementById(id);
-
-// --- AJOUT ALU_ -> GSK_ ---
-function toAluFormat(k){
-  if(!k) return '';
-  k = k.trim();
-  if(k.startsWith('gsk_')) return 'alu_' + k.slice(4);
-  return k;
-}
-function toGroqFormat(k){
-  if(!k) return '';
-  k = k.trim();
-  if(k.startsWith('alu_')) return 'gsk_' + k.slice(4);
-  return k;
-}
-function getRealApiKey(){
-  return toGroqFormat(state.apiKey);
-}
-// --- FIN AJOUT ---
-
-const rawStoredKey = localStorage.getItem('aluetoo_groq_key') || '';
-
 const state = {
-  apiKey: toAluFormat(rawStoredKey),
+  apiKey: localStorage.getItem('aluetoo_groq_key') || '',
   lastPrompt: localStorage.getItem('aluetoo_last_prompt') || '',
   lastHTML: '',
   history: JSON.parse(localStorage.getItem('aluetoo_history') || '[]')
@@ -274,45 +253,33 @@ function toast(msg, ms=2200){
 }
 
 function updateKeyUI(){
-  const hasKey =!!state.apiKey;
+  const hasKey = !!state.apiKey;
   el.keyBanner.classList.toggle('hidden', hasKey);
   el.apiKey.value = state.apiKey;
-  el.send.disabled =!hasKey;
+  el.send.disabled = !hasKey;
 }
 
 function showSettings(show=true){
-  el.settings.classList.toggle('hidden',!show);
+  el.settings.classList.toggle('hidden', !show);
   if(show){ setTimeout(()=> el.apiKey.focus(), 50); }
 }
 function hideSettings(){ showSettings(false); }
 
 function saveKey(){
-  let v = el.apiKey.value.trim();
-  if(!v){
-    state.apiKey = '';
-    localStorage.removeItem('aluetoo_groq_key');
-    updateKeyUI();
-    hideSettings();
-    toast('Clé supprimée');
-    return;
-  }
-  // Autorise gsk_ mais convertit en alu_ pour l'affichage
-  if(v.startsWith('gsk_')){ v = toAluFormat(v); }
-  if(!v.startsWith('alu_')){
-    toast('La clé doit commencer par alu_');
-    return;
-  }
+  const v = el.apiKey.value.trim();
+  // ✅ CORRIGÉ : validation alu_ au lieu de gsk_
+  if(v && !v.startsWith('alu_')){ toast('La clé semble invalide (alu_…)'); return; }
   state.apiKey = v;
   localStorage.setItem('aluetoo_groq_key', v);
   updateKeyUI();
   hideSettings();
-  toast('Clé enregistrée (alu_)');
+  toast(v ? 'Clé enregistrée' : 'Clé supprimée');
 }
 function clearKey(){ el.apiKey.value=''; saveKey(); }
 
 function addToHistory(prompt){
   if(!prompt) return;
-  state.history = [prompt,...state.history.filter(p=>p!==prompt)].slice(0,5);
+  state.history = [prompt, ...state.history.filter(p=>p!==prompt)].slice(0,5);
   localStorage.setItem('aluetoo_history', JSON.stringify(state.history));
   renderHistory();
 }
@@ -329,9 +296,9 @@ function renderHistory(){
 }
 
 function setLoading(on){
-  el.loader.classList.toggle('hidden',!on);
-  el.send.disabled = on ||!state.apiKey;
-  el.regenerate.disabled = on ||!state.lastPrompt;
+  el.loader.classList.toggle('hidden', !on);
+  el.send.disabled = on || !state.apiKey;
+  el.regenerate.disabled = on || !state.lastPrompt;
 }
 
 function extractHTML(text){
@@ -339,13 +306,12 @@ function extractHTML(text){
   t = t.replace(/^```html\s*/i,'').replace(/^```\s*/,'').replace(/```$/,'');
   const iDoc = t.toLowerCase().indexOf('<!doctype');
   const iHtml = t.toLowerCase().indexOf('<html');
-  const start = iDoc >=0? iDoc : (iHtml>=0? iHtml : 0);
+  const start = iDoc >=0 ? iDoc : (iHtml>=0? iHtml : 0);
   if(start>0) t = t.slice(start);
   return t;
 }
 
 async function callGroq(prompt, model){
-  const realKey = getRealApiKey();
   const body = {
     model,
     temperature: 0.75,
@@ -357,7 +323,7 @@ async function callGroq(prompt, model){
   };
   const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
-    headers: { 'Authorization': `Bearer ${realKey}`, 'Content-Type': 'application/json' },
+    headers: { 'Authorization': `Bearer ${state.apiKey}`, 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
   });
   if(!res.ok){
@@ -369,9 +335,9 @@ async function callGroq(prompt, model){
 }
 
 async function generate(promptText, isRegen=false){
-  if(!state.apiKey){ showSettings(true); toast('Ajoute ta clé Aluetoo (alu_)'); return; }
+  if(!state.apiKey){ showSettings(true); toast('Ajoute ta clé Groq'); return; }
   const prompt = (promptText || el.prompt.value || '').trim();
-  if(!prompt){ toast('Écris une idée d’abord'); el.prompt.focus(); return; }
+  if(!prompt){ toast('Écris une idée d\'abord'); el.prompt.focus(); return; }
 
   state.lastPrompt = prompt;
   localStorage.setItem('aluetoo_last_prompt', prompt);
@@ -398,7 +364,7 @@ async function generate(promptText, isRegen=false){
   }catch(err){
     console.error(err);
     el.welcome.classList.remove('hidden');
-    toast('Échec de génération. Vérifie ta clé alu_ et réessaie.');
+    toast('Échec de génération. Vérifie ta clé et réessaie.');
   }finally{
     setLoading(false);
   }
@@ -423,7 +389,7 @@ async function copyPreview(){
     const blob = await new Promise(res => canvas.toBlob(res, 'image/png', 0.95));
     if(navigator.clipboard && window.ClipboardItem){
       await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-      toast('Aperçu copié en image!');
+      toast('Aperçu copié en image !');
     }else{
       throw new Error('Clipboard non supporté');
     }
@@ -449,10 +415,9 @@ function toggleFullscreen(){
   else { wrap.requestFullscreen?.(); }
 }
 
-// Events
 el.send.onclick = handleSend;
 el.prompt.addEventListener('keydown', (e)=>{
-  if(e.key === 'Enter' &&!e.shiftKey){ e.preventDefault(); handleSend(); }
+  if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); handleSend(); }
 });
 el.regenerate.onclick = ()=> generate(state.lastPrompt, true);
 el.fullscreen.onclick = toggleFullscreen;
@@ -473,7 +438,6 @@ document.querySelectorAll('.example').forEach(btn=>{
   });
 });
 
-// Init
 updateKeyUI();
 renderHistory();
 if(state.lastPrompt){ el.prompt.value = state.lastPrompt; el.regenerate.disabled = false; }
@@ -487,6 +451,5 @@ $('historyBtn').onclick = ()=> {
   document.getElementById('historyWrap').scrollIntoView({behavior:'smooth', block:'nearest'});
 };
 </script>
-<script>(function(){document.addEventListener("click",function(e){var a=e.target.closest("[data-product-id]");if(!a)return;e.preventDefault();var pid=a.getAttribute("data-product-id");if(pid)parent.postMessage({type:"ecto-artifact-link-click",productId:pid},"*")})})();</script>
 </body>
 </html>
